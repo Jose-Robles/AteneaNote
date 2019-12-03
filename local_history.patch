@@ -1,0 +1,20 @@
+Index: app/src/main/java/com/deepjose/ateneanote/Register.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/deepjose/ateneanote/Register.java	(date 1574683727273)
++++ app/src/main/java/com/deepjose/ateneanote/Register.java	(date 1574683727273)
+@@ -36,6 +36,12 @@
+ 
+         mAuth = FirebaseAuth.getInstance();
+ 
++
++        email.setText("joserobles98.21@gmail.com");
++        pass.setText("contraseña");
++        name.setText("José");
++        surname.setText("Robles Bastidas");
++
+         btnBack.setOnClickListener(v -> {
+             setResult(RESULT_CANCELED) ;
+             finish() ;

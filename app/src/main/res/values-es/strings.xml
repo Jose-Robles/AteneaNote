@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Idioma: español -->
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_conf_pass">Conf.Contraseña</string>
+
+    <string name="label_login">Entrar</string>
+    <string name="label_register">Registrar</string>
+    <string name="label_ok">Aceptar</string>
+    <string name="label_cancel">Cancelar</string>
+
+    <string name="err_empty">Los campos no pueden estar vacíos</string>
+    <string name="err_pass">Las contraseñas deben ser iguales</string>
+    <string name="err_register">Error en el registro</string>
+
+    <string-array name="arr_paises">
+        <item>España</item>
+        <item>Francia</item>
+        <item>Reino Unido</item>
+        <item>Italia</item>
+        <item>Alemania</item>
+        <item>Estados Unidos</item>
+    </string-array>
+    <string name="label_logout">Salir</string>
+    <string name="remember_me">Recordarme</string>
+    <string name="dont_remember">No recuerdo  mi contraseña</string>
+    <string name="register_button">¿Aún no tienes cuenta?</string>
+    <string name="user_name">Nombre</string>
+    <string name="have_account">Ya tengo una cuenta</string>
+    <string name="label_signup">Registrarme</string>
+    <string name="user_surname">Apellidos</string>
+    <string name="email_dialog_title">Verificación de correo</string>
+    <string name="email_dialog_body">Te hemos enviado un correo para verificar tu cuenta, por favor haz click en el enlace que contiene para poder acceder a tu cuenta de AteneaNote.</string>
+    <string name="OK">Entendido!</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="drawer_home">Tomar apuntes</string>
+    <string name="drawer_overview">Repasar</string>
+    <string name="drawer_sign_out">Cerrar sesión</string>
+    <string name="drawer_study">Estudiar</string>
+    <string name="menu_share">Publicar</string>
+    <string name="navigation_drawer_close">Cerrar cajón de opciones</string>
+    <string name="navigation_drawer_open">Abrir cajón de opciones</string>
+    <string name="nav_header_desc">Cabecera de cajón</string>
+    <string name="menu_send">Enviar</string>
+    <string name="content_activity_name">AteneaNote</string>
+    <string name="title_activity_main_content">contenidpppp</string>
+
+
+</resources>
