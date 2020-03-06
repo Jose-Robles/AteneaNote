@@ -7,37 +7,37 @@
 
     <fragment
         android:id="@+id/nav_edit"
-        android:name="com.deepjose.ateneanote.ui.home.HomeFragment"
+        android:name="com.deepjose.ateneanote.fragments.HomeFragment"
         android:label="@string/drawer_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_study"
-        android:name="com.deepjose.ateneanote.ui.gallery.GalleryFragment"
+        android:name="com.deepjose.ateneanote.fragments.StudyFragment"
         android:label="@string/drawer_study"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment
         android:id="@+id/nav_summary"
-        android:name="com.deepjose.ateneanote.ui.slideshow.SlideshowFragment"
+        android:name="com.deepjose.ateneanote.fragments.SummaryFragment"
         android:label="@string/drawer_overview"
         tools:layout="@layout/fragment_slideshow" />
 
     <fragment
         android:id="@+id/nav_exit"
-        android:name="com.deepjose.ateneanote.ui.tools.ToolsFragment"
+        android:name="com.deepjose.ateneanote.fragments.ExitFragment"
         android:label="@string/drawer_sign_out"
         tools:layout="@layout/fragment_tools" />
 
     <fragment
         android:id="@+id/nav_share"
-        android:name="com.deepjose.ateneanote.ui.share.ShareFragment"
+        android:name="com.deepjose.ateneanote.fragments.ShareFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
 
     <fragment
         android:id="@+id/nav_send"
-        android:name="com.deepjose.ateneanote.ui.send.SendFragment"
+        android:name="com.deepjose.ateneanote.fragments.SendFragment"
         android:label="@string/drawer_study"
         tools:layout="@layout/fragment_send" />
 </navigation>

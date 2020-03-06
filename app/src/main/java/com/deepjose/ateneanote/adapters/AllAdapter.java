@@ -1,6 +1,7 @@
 package com.deepjose.ateneanote.adapters;
 
 import android.content.Context;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import com.deepjose.ateneanote.api.apiClient;
 import com.deepjose.ateneanote.interfaces.apiService;
 import com.deepjose.ateneanote.responses.Course;
 import com.deepjose.ateneanote.responses.Note;
+import com.deepjose.ateneanote.responses.ProNote;
+import com.deepjose.ateneanote.responses.ProSummary;
 import com.deepjose.ateneanote.responses.ResponseUser;
 import com.deepjose.ateneanote.responses.Subject;
 import com.deepjose.ateneanote.responses.Summary;
@@ -26,18 +29,22 @@ import java.util.List;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AllAdapter extends RecyclerView.Adapter<AllAdapter.AllViewHolder> {
+public class AllAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<Object> list;
+    private List<? extends Object> list;
     private int layout;
+    private MyItemsListener myItemsListenerRecycler;
+    private static int TYPE_OTHER = 1;
+    private static int TYPE_SUMMARY = 2;
 
 
-    public AllAdapter(List<Object> list, int layout) {
+    public AllAdapter(List<? extends Object> list, int layout, MyItemsListener myItemsListener) {
 
         /*
         if(list.get(0) instanceof Course){
@@ -53,6 +60,7 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.AllViewHolder> {
 
         this.list = list;
         this.layout = layout;
+        this.myItemsListenerRecycler = myItemsListener;
     }
 
     /*
@@ -67,14 +75,35 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.AllViewHolder> {
     @Override
     public AllViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
-        View view = LayoutInflater.from(context)
-                                  .inflate(layout, parent, false);
-        return new AllViewHolder(view);
+        View view;
+        if(viewType == TYPE_OTHER) {
+            view = LayoutInflater.from(context)
+                    .inflate(layout, parent, false);
+        } else {
+            view = LayoutInflater.from(context)
+                    .inflate(R.layout.layout_summary, parent, false);
+        }
+        return new AllViewHolder(view, myItemsListenerRecycler);
     }
 
     @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        ((AllViewHolder) holder).BindHolder(list.get(position));
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (list.get(position) instanceof ProSummary) {
+            return TYPE_SUMMARY;
+
+        } else {
+            return TYPE_OTHER;
+        }
+    }
+
     public void onBindViewHolder(@NonNull AllViewHolder holder, int position) {
         holder.BindHolder(list.get(position)) ;
+        //holder.title.setText(((Course)list.get(position)).getName());
     }
 
     @Override
@@ -82,14 +111,20 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.AllViewHolder> {
         return list.size();
     }
 
-    public class AllViewHolder extends RecyclerView.ViewHolder {
-        private TextView title;
-        private ImageView poster;
+    public class AllViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnCreateContextMenuListener {
+        public TextView title;
+        public ImageView poster;
+        CardView cardview;
+        MyItemsListener myItemsListener;
 
-        public AllViewHolder(@NonNull View itemView) {
+        public AllViewHolder(@NonNull View itemView, MyItemsListener myItemsListener) {
             super(itemView);
             title = itemView.findViewById(R.id.itemTitle);
             poster = itemView.findViewById(R.id.itemPoster);
+
+            this.myItemsListener = myItemsListener;
+
+            itemView.setOnClickListener(this);
         }
 
 
@@ -98,25 +133,44 @@ public class AllAdapter extends RecyclerView.Adapter<AllAdapter.AllViewHolder> {
                 this.BindHolder((Course)o);
             } else if(o instanceof Subject){
                 this.BindHolder((Subject)o);
-            } else if(o instanceof Summary){
-                this.BindHolder((Summary)o);
-            } else if(o instanceof Note){
-                this.BindHolder((Note)o);
+            } else if(o instanceof ProSummary){
+                this.BindHolder((ProSummary)o);
+            } else if(o instanceof ProNote){
+                this.BindHolder((ProNote)o);
             }
         }
 
         public void BindHolder(Course course) {
             title.setText(course.getName());
+            itemView.findViewById(R.id.layout_course).setOnCreateContextMenuListener(this);
         }
         public void BindHolder(Subject subject) {
             title.setText(subject.getName());
+            itemView.findViewById(R.id.layout_subject).setOnCreateContextMenuListener(this);
         }
-        public void BindHolder(Summary summary) {
+        public void BindHolder(ProSummary summary) {
             title.setText(summary.getContent());
+            itemView.findViewById(R.id.layout_summary).setOnCreateContextMenuListener(this);
         }
-        public void BindHolder(Note note) {
+        public void BindHolder(ProNote note) {
             title.setText(note.getContent());
+            itemView.findViewById(R.id.layout_note).setOnCreateContextMenuListener(this);
         }
 
+        @Override
+        public void onClick(View view) {
+            myItemsListener.OnItemClick(getAdapterPosition());
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+            contextMenu.add(this.getAdapterPosition(), 121, 0, "Update");
+            contextMenu.add(this.getAdapterPosition(), 122, 1, "Delete");
+        }
     }
+
+    public interface MyItemsListener{
+        void OnItemClick(int position);
+    }
+
 }

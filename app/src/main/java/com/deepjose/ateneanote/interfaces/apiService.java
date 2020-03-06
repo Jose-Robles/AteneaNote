@@ -3,18 +3,21 @@ import com.deepjose.ateneanote.responses.*;
 
 import java.util.List;
 
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.PATCH;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface apiService
 {
-    //ateneanote.deepjose.com/api/...
+    //https://ateneanote.herokuapp.com/api/...
 
     //  CREATE
 
@@ -23,8 +26,10 @@ public interface apiService
     Call<ResponseOk> newUser(@Field("FBUID") String fbuid,
                              @Field("name") String name,
                              @Field("surname") String surname,
-                             @Field("email") String email
-                             ) ;
+                             @Field("email") String email,
+                             @Field("pass") String pass
+    ) ;
+
 
     @FormUrlEncoded
     @POST("new/course")
@@ -58,7 +63,7 @@ public interface apiService
                              ) ;
 
 
-    //  GET
+    //  READ
 
     @FormUrlEncoded
     @POST("get/user")
@@ -87,55 +92,65 @@ public interface apiService
 
     //  DELETE
 
-
-    @DELETE("delete/course")
+    @FormUrlEncoded
+    @POST("delete/course")
     Call<ResponseOk> delCourse(@Field("course_id") String course_id) ;
 
-    @DELETE("delete/subject")
+    @FormUrlEncoded
+    @POST("delete/subject")
     Call<ResponseOk> delSubject(@Field("subject_id") String subject_id) ;
 
-    @DELETE("delete/summary")
+    @FormUrlEncoded
+    @POST("delete/summary")
     Call<ResponseOk> delSummary(@Field("summary_id") String summaryId) ;
 
-    @DELETE("delete/note")
+    @FormUrlEncoded
+    @POST("delete/note")
     Call<ResponseOk> delNote(@Field("note_id") String noteId) ;
 
-    @DELETE("delete/unit")
+    @FormUrlEncoded
+    @POST("delete/unit")
     Call<ResponseOk> delUnit(@Field("unit_id") String unitId) ;
 
 
     //  UPDATE
 
 
-    @PATCH("update/user")
+    @FormUrlEncoded
+    @POST("update/user")
     Call<ResponseOk> setUser(@Field("FBUID") String fbuid,
                              @Field("name") String name,
                              @Field("surname") String surname,
                              @Field("email") String email
                              ) ;
 
-    @PATCH("update/course")
+    @FormUrlEncoded
+    @POST("update/course")
     Call<ResponseOk> setCourse(@Field("course_id") String course_id,
                                @Field("name") String name
                                ) ;
 
-    @PATCH("update/subject")
+    @FormUrlEncoded
+    @POST("update/subject")
     Call<ResponseOk> setSubject(@Field("subject_id") String subject_id,
                                 @Field("name") String name,
                                 @Field("color") String color
                                 ) ;
 
-    @PATCH("update/summary")
+    @FormUrlEncoded
+    @POST("update/summary")
     Call<ResponseOk> setSummary(@Field("summary_id") String summaryId,
                                 @Field("content") String content
                                 ) ;
 
-    @PATCH("update/note")
+    @FormUrlEncoded
+    @POST("update/note")
     Call<ResponseOk> setNote(@Field("note_id") String noteId,
                              @Field("content") String content
                              ) ;
 
-    @PATCH("update/unit")
+    @FormUrlEncoded
+    @POST("update/unit")
     Call<ResponseOk> setUnit(@Field("unit_id") String unitId,
                              @Field("name") String name
                              ) ;

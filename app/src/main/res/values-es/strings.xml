@@ -45,7 +45,17 @@
     <string name="nav_header_desc">Cabecera de cajón</string>
     <string name="menu_send">Enviar</string>
     <string name="content_activity_name">AteneaNote</string>
-    <string name="title_activity_main_content">contenidpppp</string>
+    <string name="ya_registrada">Esta dirección de correo ya está registrada</string>
+    <string name="dialogLevel3Title">¿Qué tipo de dato quieres crear?</string>
+    <string name="dialogLevel3Note">Apunte</string>
+    <string name="dialogLevel3Summary">Nota</string>
+    <string name="summary_layout">N</string>
+    <string name="note_layout">A</string>
+    <string name="update">Actualizar</string>
+    <string name="delete">Eliminar</string>
+    <string name="dialogLevel2Subject">Nombre de la Asignatura</string>
+    <string name="dialogLevel2Title">Crear una nueva asignatura</string>
+    <string name="dialogLevel1Title">Editar Curso</string>
 
 
 </resources>

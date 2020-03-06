@@ -52,6 +52,22 @@
     <string name="menu_send">Send</string>
     <string name="content_activity_name">AteneaNote Materials</string>
     <string name="menu_home" translatable="false">\@string/drawer_home</string>
+    <string name="ya_registrada">This email is already registered.</string>
+    <string name="dialogLevel3Title">What would you like to create?</string>
+    <string name="dialogLevel3Note">Note</string>
+    <string name="dialogLevel3Summary">Summary</string>
+    <string name="summary_layout">S</string>
+    <string name="note_layout">N</string>
+    <string name="dialogLevel2Title">Create a new Subject!</string>
+    <string name="dialogLevel2Subject">Subject Name</string>
+    <string name="update">update</string>
+    <string name="delete">Delete</string>
+    <string name="dialogLevel1Title">Edit Course</string>
+    <string name="dialogLevel1Course">Course Name</string>
+    <string name="dialogLevel1TitleCreate">Create a new Course!</string>
+    <string name="dialogLevel2TitleUpdate">Edit Subject</string>
+    <string name="dialogLevel3TitleUpdate">Edit Note</string>
+    <string name="dialogLevel3TitleUpdate2">Edit Summary</string>
 
 
 </resources>
