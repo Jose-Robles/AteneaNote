@@ -22,6 +22,7 @@ _Al iniciar sesión se muestra una colección de cursos en los que estás matric
 #### Asignaturas
 
 <img src="fotos/device-2020-03-06-202551.gif" width="303"/>
+
 #### Material de Estudio
 
 _Dentro de cada asignatura podrás ver un listado de dos tipos de objetos: los *apuntes* y las *notas*_
